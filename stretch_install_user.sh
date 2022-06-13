@@ -36,7 +36,7 @@ mkdir ~/stretch_user/models
 
 echo "Cloning stretch_install repository into standard location."
 cd ~/repos/
-git clone https://github.com/hello-robot/stretch_install.git
+git clone https://github.com/hello-robot/stretch_install.git -b /dev/RE1.1
 cd stretch_install
 git pull
 
@@ -72,6 +72,7 @@ mkdir -p ~/.config/autostart
 cp ~/repos/stretch_install/factory/hello_robot_audio.desktop ~/.config/autostart/
 cp ~/repos/stretch_install/factory/hello_robot_xbox_teleop.desktop ~/.config/autostart/
 cp ~/repos/stretch_install/factory/hello_robot_lrf_off.desktop ~/.config/autostart/
+cp ~/repos/stretch_install/factory/hello_robot_pimu_ping.desktop ~/.config/autostart/
 echo "Done."
 echo ""
 
@@ -108,9 +109,11 @@ echo "Upgrade pip3"
 python3 -m pip install --user --upgrade pip
 
 echo "Install stretch_body and stretch_factory via pip"
-python3 -m pip install hello-robot-stretch-body
-python3 -m pip install hello-robot-stretch-body-tools
-python3 -m pip install hello-robot-stretch-factory
+#python3 -m pip install hello-robot-stretch-body
+python3 -m pip install git+https://github.com/hello-robot/stretch-body@dev/RE1.1
+#python3 -m pip install hello-robot-stretch-body-tools
+#python3 -m pip install hello-robot-stretch-factory
+python3 -m pip install git+https://github.com/hello-robot/stretch-factory@dev/RE1.1
 python3 -m pip uninstall -y opencv-contrib-python opencv-python-inference-engine
 python3 -m pip install opencv-python-inference-engine
 
