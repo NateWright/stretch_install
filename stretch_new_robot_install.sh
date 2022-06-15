@@ -3,7 +3,7 @@
 echo "#############################################"
 echo "Starting installation for a new robot."
 echo "#############################################"
-git clone https://github.com/hello-robot/stretch_install.git -b dev/RE1.1 $HOME/stretch_install
+git clone https://github.com/hello-robot/stretch_install.git -b dev/install_20.04_RE1.5 $HOME/stretch_install
 cd $HOME/stretch_install/factory
 ./stretch_setup_new_robot.sh
 if [ $? -ne 0 ]
@@ -18,24 +18,24 @@ timestamp=`date '+%Y%m%d%H%M'`;
 logdir="$HOME/stretch_user/log/$timestamp"
 logfile_system="$logdir/stretch_system_install.txt"
 logfile_user="$logdir/stretch_user_install.txt"
-logfile_qc="$logdir/stretch_qc_install.txt"
+logfile_dev_tools="$logdir/stretch_dev_tools_install.txt"
 logzip="$logdir/stretch_logs.zip"
 echo "#############################################"
 echo "Generating log $logfile_system"
 echo "Generating log $logfile_user"
-echo "Generating log $logfile_qc"
+echo "Generating log $logfile_dev_tools"
 echo "#############################################"
 echo ""
 
 mkdir -p $logdir
-cd $HOME/stretch_install
+cd $HOME/stretch_install/factory
 ./stretch_install_system.sh |& tee $logfile_system
 cd $HOME/stretch_install
-./stretch_install_user.sh |& tee $logfile_user
-# cd $HOME/stretch_install/factory
-# ./stretch_install_qc.sh |& tee $logfile_qc
+./stretch_new_user_install.sh |& tee $logfile_user
+cd $HOME/stretch_install/factory
+./stretch_install_dev_tools.sh |& tee $logfile_dev_tools
 echo "Generating $logzip. Include with any support tickets."
-zip $logzip $logfile_system $logfile_user $logfile_qc
+zip $logzip $logfile_system $logfile_user $logfile_dev_tools
 echo ""
 
 echo "#############################################"
