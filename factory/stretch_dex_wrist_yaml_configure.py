@@ -30,6 +30,6 @@ else:
         'hello-motor-lift':{'gains':{'i_safety_feedforward':0.75}}
     }
 
-user_yaml=stretch_body.hello_utils.read_fleet_yaml('stretch_re1_user_params.yaml')
+user_yaml=stretch_body.hello_utils.read_fleet_yaml('stretch_user_params.yaml')
 stretch_body.hello_utils.overwrite_dict(overwritee_dict=user_yaml, overwriter_dict=dex_wrist_yaml)
-stretch_body.hello_utils.write_fleet_yaml('stretch_re1_user_params.yaml',user_yaml)
+stretch_body.hello_utils.write_fleet_yaml('stretch_user_params.yaml',user_yaml)

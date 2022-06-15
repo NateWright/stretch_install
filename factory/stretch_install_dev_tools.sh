@@ -1,17 +1,13 @@
 #!/bin/bash
 
 #####################################################
-echo "To be run after a user install "
-echo "Configures to use local stretch_body"
-echo "Pulls down factory repos"
-
+echo "Installs common tools used for internal Hello Robot development"
 read -p "Proceed with installation (y/n)?" -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
     exit 1
 fi
-
 
 pip install --user --upgrade twine
 
@@ -21,24 +17,21 @@ sudo add-apt-repository 'deb https://typora.io/linux ./'
 sudo apt-get update
 sudo apt install --yes typora
 
+sudo apt install --yes mkdocs
 sudo apt install --yes chromium-browser
-#Install arduino
 
-curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=$HOME/.local/bin/ sh
-arduino-cli config init
-arduino-cli core install arduino:samd@1.6.21
-cp arduino-cli.yaml ~/.arduino15/
+#Install arduino
+./stretch_install_arduino.sh
 
 #Install PyCharm
 sudo snap install pycharm-community --classic
-
-pip2 install hello-robot-stretch-factory
 
 echo "Install tools for system QC and bringup "
 pip2 install twine
 pip2 install gspread
 pip2 install gspread-formatting
-pip2 install oauth2client
+pip2 install oauth2client rsa==3.4
+
 
 #pip uninstall stretch-body
 echo "Cloning repos."
@@ -49,7 +42,6 @@ git clone https://github.com/hello-robot/stretch_body.git
 git clone https://github.com/hello-robot/stretch_firmware.git
 git clone https://github.com/hello-robot/stretch_fleet.git
 git clone https://github.com/hello-robot/stretch_fleet_tools.git
-git clone https://github.com/hello-robot/stretch_sandbox.git
 git clone https://github.com/hello-robot/hello-robot.github.io
 git clone https://github.com/hello-robot/stretch_docs
 echo "Done."
