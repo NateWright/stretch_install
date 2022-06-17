@@ -1,9 +1,8 @@
 #!/bin/bash
-
+#This requires the appropriate branch of stretch_install to be cloned to $HOME before running
 echo "#############################################"
 echo "Starting installation for a new robot."
 echo "#############################################"
-git clone https://github.com/hello-robot/stretch_install.git -b dev/install_20.04_RE1.5 $HOME/stretch_install
 cd $HOME/stretch_install/factory
 ./stretch_setup_new_robot.sh
 if [ $? -ne 0 ]

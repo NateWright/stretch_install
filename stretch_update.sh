@@ -18,7 +18,7 @@ echo ""
 mkdir -p $logdir
 ./factory/stretch_install_system.sh |& tee $logfile_system
 ./stretch_new_user_install.sh |& tee $logfile_user
-./stretch_debug_report.sh |& tee $logfile_debug
+./factory/stretch_debug_report.sh |& tee $logfile_debug
 
 echo "Generating $logzip. Include with any support tickets."
 zip $logzip $logfile_system $logfile_user $logfile_debug
