@@ -2,7 +2,17 @@ sudo echo "###########################################"
 echo "INSTALLATION OF ROS WORKSPACE"
  # update .bashrc before using catkin tools
 
-if [ ${ROS_DISTRO+x} ]; then
+if [ "$ROS_DISTRO" ]; then
+    echo "###########################################"
+    echo "UPDATING EXISTING ROS INSTALLATION"
+    UPDATING=true
+else
+    UPDATING=false
+    echo "###########################################"
+    echo "INSTALLATION OF NEW ROS WORKSPACE"
+fi
+
+if [ "$UPDATING" = true ]; then
      echo "Updating: Not updating ROS in .bashrc"
 else
     echo "UPDATE .bashrc for ROS"
@@ -62,15 +72,18 @@ echo "Install ROS packages. This is important for using Python modules."
 catkin_make install
 echo ""
 
-echo "Setup calibrated robot URDF"
-rosrun stretch_calibration update_uncalibrated_urdf.sh
-#This will grab the latest URDF and calibration files from ~/stretch_user
-#rosrun stretch_calibration update_with_most_recent_calibration.sh
-#Force to run interactive so $HELLO_FLEET_ID is found
-echo "This may fail if doing initial robot bringup. That is OK."
-source $HOME/catkin_ws/devel/setup.bash
-bash -i ~/catkin_ws/src/stretch_ros/stretch_calibration/nodes/update_with_most_recent_calibration.sh
-echo "--Done--"
+if [ "$UPDATING" = true ]; then
+    echo "Not updating URDF"
+else
+    echo "Setup calibrated robot URDF"
+    rosrun stretch_calibration update_uncalibrated_urdf.sh
+    #This will grab the latest URDF and calibration files from ~/stretch_user
+    #rosrun stretch_calibration update_with_most_recent_calibration.sh
+    #Force to run interactive so $HELLO_FLEET_ID is found
+    echo "This may fail if doing initial robot bringup. That is OK."
+    bash -i ~/catkin_ws/src/stretch_ros/stretch_calibration/nodes/update_with_most_recent_calibration.sh
+    echo "--Done--"
+fi
 
 # compile Cython code
 echo "Compiling Cython code"
@@ -81,10 +94,27 @@ echo "Done"
 # install scan_tools for laser range finder odometry
 echo "INSTALL SCAN_TOOLS FROM GITHUB"
 cd ~/catkin_ws/
-echo "Cloning the csm github repository."
-git clone https://github.com/AndreaCensi/csm
-cd csm
-git pull
+dd="$HOME/catkin_ws/src/csm"
+if [ -d "$dd" ]
+then
+    echo "Directory $dd exists."
+    cd $dd
+    git pull
+    if [ $? -ne 0 ]
+    then
+      echo "Installation failed. Exiting"
+	    exit 1
+    fi
+else
+    echo "Cloning the csm github repository."
+    cd $HOME/catkin_ws/src
+    git clone https://github.com/AndreaCensi/csm
+    if [ $? -ne 0 ]
+    then
+      echo "Installation failed. Exiting"
+	    exit 1
+    fi
+fi
 
 echo "Handle csm dependencies."
 cd ~/catkin_ws/

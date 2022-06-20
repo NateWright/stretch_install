@@ -9,6 +9,7 @@ then
     exit 1
 fi
 
+
 # install  typora
 wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
 sudo add-apt-repository 'deb https://typora.io/linux ./'
@@ -32,4 +33,16 @@ pip3 install oauth2client rsa==3.4
 
 echo ""
 
+echo "Cloning repos."
+cd ~/repos/
+git clone https://github.com/hello-robot/stretch_install.git
+git clone https://github.com/hello-robot/stretch_factory.git
+git clone https://github.com/hello-robot/stretch_body.git
+git clone https://github.com/hello-robot/stretch_firmware.git
+git clone https://github.com/hello-robot/stretch_fleet.git
+git clone https://github.com/hello-robot/stretch_fleet_tools.git
+git clone https://github.com/hello-robot/hello-robot.github.io
+git clone https://github.com/hello-robot/stretch_docs
+echo "Done."
+echo ""
 

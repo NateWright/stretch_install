@@ -6,6 +6,6 @@
 #sudo ./install.sh
 
 curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=$HOME/.local/bin/ sh
-arduino-cli config init
-arduino-cli core install arduino:samd@1.6.21
+$HOME/.local/bin/arduino-cli config init
+$HOME/.local/bin/arduino-cli core install arduino:samd@1.6.21
 cp arduino-cli.yaml ~/.arduino15/
