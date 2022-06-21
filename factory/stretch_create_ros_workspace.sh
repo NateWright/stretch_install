@@ -94,7 +94,7 @@ echo "Done"
 # install scan_tools for laser range finder odometry
 echo "INSTALL SCAN_TOOLS FROM GITHUB"
 cd ~/catkin_ws/
-dd="$HOME/catkin_ws/src/csm"
+dd="$HOME/catkin_ws/csm"
 if [ -d "$dd" ]
 then
     echo "Directory $dd exists."
@@ -107,7 +107,7 @@ then
     fi
 else
     echo "Cloning the csm github repository."
-    cd $HOME/catkin_ws/src
+    cd $HOME/catkin_ws/
     git clone https://github.com/AndreaCensi/csm
     if [ $? -ne 0 ]
     then
