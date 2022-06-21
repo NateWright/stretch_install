@@ -91,7 +91,7 @@ Next, pull down the `stretch_install` repository and being the installation proc
 
 ```bash
 cd ~/
-git clone https://github.com/hello-robot/stretch_install -b install_20.04
+git clone https://github.com/hello-robot/stretch_install -b dev/install_20.04
 cd stretch_install
 ./stretch_new_robot_install.sh
 ```
