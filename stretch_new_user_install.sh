@@ -41,7 +41,7 @@ then
     echo "Directory $dd exists. Checking out branch install_20.04"
     cd $dd
     git pull
-    git checkout dev/install_20.04
+    git checkout dev/install_20.04_RE1.5
     if [ $? -ne 0 ]
     then
       echo "Installation failed. Exiting"
@@ -50,7 +50,7 @@ then
 else
     echo "Cloning stretch_install repository into standard location."
     cd $HOME/repos/
-    git clone https://github.com/hello-robot/stretch_install.git -b dev/install_20.04
+    git clone https://github.com/hello-robot/stretch_install.git -b dev/install_20.04_RE1.5
     if [ $? -ne 0 ]
     then
       echo "Installation failed. Exiting"
@@ -181,5 +181,5 @@ echo ""
 echo "DONE WITH PIP PACKAGES"
 echo "###########################################"
 echo ""
-
+cd ~/stretch_install
 ./factory/stretch_create_ros_workspace.sh
