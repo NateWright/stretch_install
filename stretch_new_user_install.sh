@@ -181,6 +181,6 @@ echo "###########################################"
 echo ""
 
 
-./factory/stretch_create_ros_workspace.sh
+~/repos/stretch_install/factory/stretch_create_ros_workspace.sh
 
 echo "############ Finished Stretch New User Install ############"
