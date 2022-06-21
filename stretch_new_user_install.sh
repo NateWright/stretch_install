@@ -41,7 +41,7 @@ then
     echo "Directory $dd exists. Checking out branch install_18.04"
     cd $dd
     git pull
-    git checkout dev/install_18.04
+    git checkout dev/install_18.04_RE1.5
     if [ $? -ne 0 ]
     then
       echo "Installation failed. Exiting"
@@ -50,7 +50,7 @@ then
 else
     echo "Cloning stretch_install repository into standard location."
     cd $HOME/repos/
-    git clone https://github.com/hello-robot/stretch_install.git -b dev/install_18.04
+    git clone https://github.com/hello-robot/stretch_install.git -b dev/install_18.04_RE1.5
     if [ $? -ne 0 ]
     then
       echo "Installation failed. Exiting"
