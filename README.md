@@ -32,7 +32,7 @@ Logout and the log back in as the new user. Then pull down the Stretch_Install r
 
 ```bash
 cd ~/
-git clone https://github.com/hello-robot/stretch_install -b install_18.04
+git clone https://github.com/hello-robot/stretch_install -b dev/install_18.04_RE1.5
 cd stretch_install
 ./stretch_new_user_install.sh
 ```
@@ -50,7 +50,7 @@ Hello Robot will periodically release updates of the Stretch packages. In order 
 
 ```bash
 cd ~/repos
-git clone https://github.com/hello-robot/stretch_install -b install_18.04
+git clone https://github.com/hello-robot/stretch_install -b dev/install_18.04_RE1.5
 git pull
 ```
 
@@ -73,8 +73,8 @@ Reboot your computer. After power up, check that the new install worked. For exa
 
 A fresh OS install should only be done under the guidance of Hello Robot Support. The steps are:
 
-* [Setup the BIOS]()  (only necessary for NUCs not previously configured by Hello Robot)
-* [Install  Ubuntu 18.04LTS]()
+* [Setup the BIOS](./docs/configure_BIOS.md)  (only necessary for NUCs not previously configured by Hello Robot)
+* [Install  Ubuntu 18.04LTS](./docs/install_ubuntu_18.04.md)
 * Run the `stretch_new_robot_install.sh` script (below)
 
 First you will need to know the serial number of your robot (eg, stretch-re1-1001). 
@@ -91,7 +91,7 @@ Next, pull down the `stretch_install` repository and being the installation proc
 
 ```bash
 cd ~/
-git clone https://github.com/hello-robot/stretch_install -b install_18.04
+git clone https://github.com/hello-robot/stretch_install -b dev/install_18.04_RE1.5
 cd stretch_install
 ./stretch_new_robot_install.sh
 ```
