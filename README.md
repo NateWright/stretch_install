@@ -50,7 +50,7 @@ Hello Robot will periodically release updates of the Stretch packages. In order 
 
 ```bash
 cd ~/repos
-git clone https://github.com/hello-robot/stretch_install -b install_20.04
+git clone https://github.com/hello-robot/stretch_install -b dev/install_20.04_RE1.5
 git pull
 ```
 
