@@ -73,8 +73,8 @@ Reboot your computer. After power up, check that the new install worked. For exa
 
 A fresh OS install should only be done under the guidance of Hello Robot Support. The steps are:
 
-* [Setup the BIOS]()  (only necessary for NUCs not previously configured by Hello Robot)
-* [Install  Ubuntu 20.04LTS]()
+* [Setup the BIOS](./docs/configure_BIOS.md)  (only necessary for NUCs not previously configured by Hello Robot)
+* [Install  Ubuntu 20.04LTS](./docs/install_ubuntu_20.04.md)
 * Run the `stretch_new_robot_install.sh` script (below)
 
 First you will need to know the serial number of your robot (eg, stretch-re1-1001). 
