@@ -128,6 +128,7 @@ cp ~/repos/stretch_install/factory/hello_robot_audio.desktop ~/.config/autostart
 cp ~/repos/stretch_install/factory/hello_robot_xbox_teleop.desktop ~/.config/autostart/
 cp ~/repos/stretch_install/factory/hello_robot_lrf_off.desktop ~/.config/autostart/
 cp ~/repos/stretch_install/factory/hello_robot_pimu_ping.desktop ~/.config/autostart/
+cp ~/repos/stretch_install/factory/hello_robot_startup_sound.desktop ~/.config/autostart/
 echo "Done."
 echo ""
 
